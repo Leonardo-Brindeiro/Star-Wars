@@ -5,6 +5,10 @@ import fetchData from '../service/fetchApi';
 
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
+  const [name, setName] = useState('');
+  const handlechange = ({ target }) => {
+    setName(target.value);
+  };
 
   useEffect(() => {
     const requestAPI = async () => {
@@ -14,7 +18,11 @@ function AppProvider({ children }) {
     requestAPI();
   }, []);
 
-  const contexto = useMemo(() => data, [data]);
+  const contexto = useMemo(() => ({
+    data,
+    name,
+    handlechange,
+  }), [data, name]);
 
   return (
     <AppContext.Provider value={ contexto }>

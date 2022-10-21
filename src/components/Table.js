@@ -2,9 +2,17 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 
 function Table() {
-  const data = useContext(AppContext);
+  const { data, name, handlechange } = useContext(AppContext);
   return (
     <div>
+      <h1>Projeto Star Wars - Trybe</h1>
+
+      <input // Ajuda de valéria, raphael pacheco e o roberth.
+        type="text"
+        data-testid="name-filter"
+        onChange={ handlechange } // não posso esquecer do meu handlechange para mudança de estado
+      />
+
       <table>
         <tr>
           <th>name</th>
@@ -21,7 +29,7 @@ function Table() {
           <th>edited</th>
           <th>url</th>
         </tr>
-        {data && data.map((p) => (
+        {data?.filter((el) => el.name.includes(name)).map((p) => (
           <tr key={ p.name }>
             <td>{p.name}</td>
             <td>{p.rotation_period}</td>

@@ -6,7 +6,7 @@ import AppProvider from './context/AppProvider';
 function App() {
   return (
     <AppProvider>
-      <h1>Starwars</h1>
+
       <Table />
     </AppProvider>
   );
