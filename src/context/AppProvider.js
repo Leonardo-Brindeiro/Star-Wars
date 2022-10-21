@@ -6,8 +6,12 @@ import fetchData from '../service/fetchApi';
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
+  const [column, setColumn] = useState('');
   const handlechange = ({ target }) => {
     setName(target.value);
+  };
+  const selectionChange = ({ target }) => {
+    setColumn(target.value);
   };
 
   useEffect(() => {
@@ -21,8 +25,10 @@ function AppProvider({ children }) {
   const contexto = useMemo(() => ({
     data,
     name,
+    column,
     handlechange,
-  }), [data, name]);
+    selectionChange,
+  }), [data, name, column]);
 
   return (
     <AppContext.Provider value={ contexto }>
