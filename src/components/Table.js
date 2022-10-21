@@ -12,7 +12,33 @@ function Table() {
         data-testid="name-filter"
         onChange={ handlechange } // não posso esquecer do meu handlechange para mudança de estado
       />
+      <select
+        data-testid="column-filter" // mesmo modelo de código do projeto tryunfo
+      >
+        <option value="population">population</option>
+        <option value="orbital_period"> orbital_period</option>
+        <option value="diameter">diameter</option>
+        <option value="rotation_period">rotation_period</option>
+        <option value="surface_water">surface_water</option>
+      </select>
+      <select
+        data-testid="comparison-filter" // mesmo modelo de código do projeto tryunfo
+      >
+        <option value="maior que">maior que</option>
+        <option value="menor que"> menor que</option>
+        <option value="igual a">igual a</option>
+      </select>
+      <input
+        type="number"
+        data-testid="value-filter"
+      />
+      <button
+        type="button"
+        data-testid="button-filter"
 
+      >
+        Filtrar
+      </button>
       <table>
         <tr>
           <th>name</th>
@@ -29,21 +55,21 @@ function Table() {
           <th>edited</th>
           <th>url</th>
         </tr>
-        {data?.filter((el) => el.name.includes(name)).map((e) => (
-          <tr key={ e.name }>
-            <td>{e.name}</td>
-            <td>{e.rotation_period}</td>
-            <td>{e.orbital_period}</td>
-            <td>{e.diameter}</td>
-            <td>{e.climate}</td>
-            <td>{e.gravity}</td>
-            <td>{e.terrain}</td>
-            <td>{e.surface_water}</td>
-            <td>{e.population}</td>
-            <td>{e.films}</td>
-            <td>{e.created}</td>
-            <td>{e.edited}</td>
-            <td>{e.url}</td>
+        {data?.filter((el) => el.name.includes(name)).map((p) => (
+          <tr key={ p.name }>
+            <td>{p.name}</td>
+            <td>{p.rotation_period}</td>
+            <td>{p.orbital_period}</td>
+            <td>{p.diameter}</td>
+            <td>{p.climate}</td>
+            <td>{p.gravity}</td>
+            <td>{p.terrain}</td>
+            <td>{p.surface_water}</td>
+            <td>{p.population}</td>
+            <td>{p.films}</td>
+            <td>{p.created}</td>
+            <td>{p.edited}</td>
+            <td>{p.url}</td>
           </tr>
         ))}
       </table>
