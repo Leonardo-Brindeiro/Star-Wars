@@ -29,21 +29,21 @@ function Table() {
           <th>edited</th>
           <th>url</th>
         </tr>
-        {data?.filter((el) => el.name.includes(name)).map((p) => (
-          <tr key={ p.name }>
-            <td>{p.name}</td>
-            <td>{p.rotation_period}</td>
-            <td>{p.orbital_period}</td>
-            <td>{p.diameter}</td>
-            <td>{p.climate}</td>
-            <td>{p.gravity}</td>
-            <td>{p.terrain}</td>
-            <td>{p.surface_water}</td>
-            <td>{p.population}</td>
-            <td>{p.films}</td>
-            <td>{p.created}</td>
-            <td>{p.edited}</td>
-            <td>{p.url}</td>
+        {data?.filter((el) => el.name.includes(name)).map((ronaldo) => (
+          <tr key={ ronaldo.name }>
+            <td>{ronaldo.name}</td>
+            <td>{ronaldo.rotation_period}</td>
+            <td>{ronaldo.orbital_period}</td>
+            <td>{ronaldo.diameter}</td>
+            <td>{ronaldo.climate}</td>
+            <td>{ronaldo.gravity}</td>
+            <td>{ronaldo.terrain}</td>
+            <td>{ronaldo.surface_water}</td>
+            <td>{ronaldo.population}</td>
+            <td>{ronaldo.films}</td>
+            <td>{ronaldo.created}</td>
+            <td>{ronaldo.edited}</td>
+            <td>{ronaldo.url}</td>
           </tr>
         ))}
       </table>
