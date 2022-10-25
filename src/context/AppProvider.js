@@ -24,7 +24,6 @@ function AppProvider({ children }) {
     setNumb(target.value);
   };
   const handleclick = useCallback(() => {
-    console.log({ column, maior, numb });
     setFiltes([...filtes, { column, maior, numbe: numb }]);
   }, [column, filtes, maior, numb]);
 
