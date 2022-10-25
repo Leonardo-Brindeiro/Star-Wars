@@ -6,10 +6,17 @@ import fetchData from '../service/fetchApi';
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
-  const [column, setColumn] = useState('population');
   const [maior, setMaior] = useState('maior que');
   const [numb, setNumb] = useState('0');
   const [filtes, setFiltes] = useState([]);
+  const [mapeando, setMapeando] = useState(['population', // ajuda do thyerri
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
+
+  const [column, setColumn] = useState(mapeando[0]); // ele vai mapear apartir do primeiro elemento do array
 
   const handlechange = ({ target }) => {
     setName(target.value);
@@ -22,10 +29,11 @@ function AppProvider({ children }) {
   };
   const handleNumb = ({ target }) => {
     setNumb(target.value);
-  };
+  };// o use  callback é muito útil para evitar renderizações desnessesárias, pois é bom usar até mesmo na função de click
   const handleclick = useCallback(() => {
     setFiltes([...filtes, { column, maior, numbe: numb }]);
-  }, [column, filtes, maior, numb]);
+    setMapeando(mapeando.filter((el) => el !== column)); // ajuda do thierry usando o map, pra poder tirar
+  }, [column, filtes, maior, numb, mapeando]); //  os valores da caixa conforme o readme, tudo isso no  mesmo botão de filtrar
 
   useEffect(() => {
     const requestAPI = async () => {
@@ -34,7 +42,7 @@ function AppProvider({ children }) {
     };
     requestAPI();
   }, []);
-
+  // use memo é pra nunca dar problemas de lint
   const contexto = useMemo(() => ({
     data,
     name,
@@ -42,12 +50,14 @@ function AppProvider({ children }) {
     maior,
     numb,
     filtes,
+    mapeando,
     handleclick,
     handlechange,
     selectionChange,
     selectionMaior,
     handleNumb,
-  }), [data, name, column, maior, numb, filtes, handleclick]);
+    setMapeando,
+  }), [data, name, column, maior, numb, filtes, mapeando, handleclick]);
 
   return (
     <AppContext.Provider value={ contexto }>

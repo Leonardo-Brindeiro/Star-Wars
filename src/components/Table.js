@@ -7,11 +7,12 @@ function Table() {
     handleclick,
     numb,
     filtes,
+    mapeando, // a continuação da questão 6
     name,
     handlechange,
     selectionChange,
     selectionMaior } = useContext(AppContext);
-  // ajuda do andre horman e julio severo
+  // ajuda do andre horman e julio silveira
   const handlefilter = (planets) => {
     let planetaFilt = planets;
     filtes.forEach(({ column, maior, numbe }) => {
@@ -42,11 +43,9 @@ function Table() {
         data-testid="column-filter"
         onChange={ selectionChange } // mesmo modelo de código do projeto tryunfo
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {mapeando.map((p, i) => (
+          <option value={ p } key={ i }>{p}</option> // um modelo de option de maneira dinâmica ajuda do thierry
+        ))}
       </select>
       <select
         data-testid="comparison-filter"
@@ -70,6 +69,13 @@ function Table() {
       >
         Filtrar
       </button>
+      <ul>
+        {filtes.map((p) => (
+          <li key={ p.column }>{`${p.column} ${p.maior} ${p.numbe}`}</li>
+        ))}
+
+      </ul>
+
       <table>
         <tr>
           <th>name</th>
