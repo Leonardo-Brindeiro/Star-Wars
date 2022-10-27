@@ -5,6 +5,8 @@ function Table() {
   const { data,
     handleNumb,
     handleclick,
+    handleForInput,
+    handleAllFilter,
     numb,
     filtes,
     mapeando, // a continuação da questão 6
@@ -69,9 +71,28 @@ function Table() {
       >
         Filtrar
       </button>
+
+      <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ handleAllFilter } // meu botão de  remover filtros
+      >
+        Remover Filtros
+      </button>
       <ul>
         {filtes.map((p) => (
-          <li key={ p.column }>{`${p.column} ${p.maior} ${p.numbe}`}</li>
+          <li
+            key={ p.column }
+            data-testid="filter"
+          >
+            {`${p.column}   ${p.maior}   ${p.numbe}`}
+            <button
+              type="button"
+              onClick={ () => handleForInput(p) }
+            >
+              X
+            </button>
+          </li>
         ))}
 
       </ul>

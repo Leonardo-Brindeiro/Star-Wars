@@ -17,7 +17,7 @@ test('Verifica inputs e botoes', async () => {
     await act(async () => {
         renderWithContext(<App />);
       })
-
+// ele vai pegar todo o meu estado global 
 
     const name = screen.getByTestId('name-filter') //
      expect(name).toBeInTheDocument();
@@ -79,53 +79,6 @@ test('Verifica inputs e botoes', async () => {
       // getallBy role para todas as linhas  
       //row linhas  
       
-      const Alderaan =await screen.findByRole('cell', {
-        name: /alderaan/i
-      })
-      expect(Alderaan).toBeInTheDocument('')
-
-      const yavinIV =await screen.findByRole('cell', {
-        name: /yavin IV/i
-      })
-      expect(yavinIV).toBeInTheDocument('')
-
-
-      const hoth =await screen.findByRole('cell', {
-        name: /hoth/i
-      })
-      expect(hoth).toBeInTheDocument('')
-
-      const dagoba =await screen.findByRole('cell', {
-        name: /dagobah/i
-      })
-      expect(dagoba).toBeInTheDocument('')
-
-      const bespin =await screen.findByRole('cell', {
-        name: /bespin/i
-      })
-      expect(bespin).toBeInTheDocument('')
-
-      const endor =await screen.findByRole('cell', {
-        name: /endor/i
-      })
-      expect(endor).toBeInTheDocument('')
-
-      const nabo =await screen.findByRole('cell', {
-        name: /naboo/i
-      })
-      expect(nabo).toBeInTheDocument('')
-
-      const corus =await screen.findByRole('cell', {
-        name: /coruscant/i
-      })
-      expect(corus).toBeInTheDocument('')
-
-      const kamino =await screen.findByRole('cell', {
-        name: /kamino/i
-      })
-      expect(kamino).toBeInTheDocument('')
-      
-
       userEvent.selectOptions("maior que")
       
       userEvent.selectOptions("menor que")
